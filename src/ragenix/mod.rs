@@ -2,7 +2,6 @@ use color_eyre::{
     eyre::{eyre, Result, WrapErr},
     Help, SectionExt,
 };
-use jsonschema::JSONSchema;
 use lazy_static::lazy_static;
 use std::{
     fs::{self, OpenOptions},
