@@ -93,30 +93,6 @@ pub(crate) struct RagenixRule {
     pub public_keys: Vec<String>,
 }
 
-/// Validate conformance of the passed path to the JSON schema [`AGENIX_JSON_SCHEMA`].
-pub(crate) fn validate_rules_file<P: AsRef<Path>>(path: P) -> Result<()> {
-    if !path.as_ref().exists() {
-        return Err(eyre!("{} does not exist!", path.as_ref().to_string_lossy()));
-    }
-
-    let instance = nix_rules_to_json(&path)?;
-    let compiled = JSONSchema::options()
-        .with_draft(jsonschema::Draft::Draft7)
-        .compile(&AGENIX_JSON_SCHEMA)?;
-    let result = compiled.validate(&instance);
-
-    if let Err(errors) = result {
-        let error_msg = errors
-            .into_iter()
-            .map(|err| format!(" - {}: {}", err.instance_path, err))
-            .collect::<Vec<String>>()
-            .join("\n");
-        Err(eyre!(error_msg))
-    } else {
-        Ok(())
-    }
-}
-
 /// Parse the given rules file path.
 ///
 /// This method assumes that the passed file adheres to the [`AGENIX_JSON_SCHEMA`].
