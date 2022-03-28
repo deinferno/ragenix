@@ -1,5 +1,5 @@
 use color_eyre::eyre::{eyre, Result};
-use std::{env, fs, path::Path, process};
+use std::{env, fs, path::Path};
 
 mod age;
 mod cli;
