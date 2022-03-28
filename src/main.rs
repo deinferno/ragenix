@@ -13,7 +13,6 @@ fn main() -> Result<()> {
     if opts.schema {
         print!("{}", ragenix::AGENIX_JSON_SCHEMA_STRING);
     } else {
-
         let rules = ragenix::parse_rules(&opts.rules)?;
         if opts.verbose {
             println!("{:#?}", rules);
