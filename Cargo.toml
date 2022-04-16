@@ -6,7 +6,6 @@ authors = ["Vincent Haupert <vincent@yaxi.tech>"]
 edition = "2021"
 
 [build]
-target = x86_64-unknown-linux-gnu
 rustflags = ["-C","target-cpu=x86-64"]
 
 [features]
