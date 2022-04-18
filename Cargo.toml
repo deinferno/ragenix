@@ -6,7 +6,7 @@ authors = ["Vincent Haupert <vincent@yaxi.tech>"]
 edition = "2021"
 
 [build]
-rustflags = ["-C","target-cpu=x86-64"]
+rustflags = ["-C","target-cpu=native"]
 
 [features]
 default = [ "recursive-nix" ]
